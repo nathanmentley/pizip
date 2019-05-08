@@ -1,0 +1,10 @@
+[package]
+name = "pizip"
+version = "0.1.0"
+authors = ["Nathan Mentley <nathanmentley@gmail.com>"]
+edition = "2018"
+description = "PiZip utility"
+
+[dependencies]
+clap = "2.33.0"
+libflate = "0.1.22"
