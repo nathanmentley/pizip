@@ -25,17 +25,19 @@ impl ICommandDelegate for DecompressCommand {
 
     fn get_subcommand<'a, 'b>(&self) -> App<'a, 'b> {
         return SubCommand::with_name(self.get_name())
-            .about("decompress stdin")
+            .about("decompress stdin")/*
             .arg(Arg::with_name("debug")
                 .short("d")
                 .help("print debug information verbosely")
-            )
+            )*/
         ;
     }
 
     fn logic(&self, _args: &ArgMatches) {
+        //decode gzip from stdin
         let mut input = stdin();
         let mut decoder = Decoder::new(&mut input).unwrap();
+        //copy stream to stdout
         copy(&mut decoder, &mut stdout()).unwrap();
     }
 }

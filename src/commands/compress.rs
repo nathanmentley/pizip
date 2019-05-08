@@ -32,9 +32,13 @@ impl ICommandDelegate for CompressCommand {
 
     fn logic(&self, _args: &ArgMatches) {
         pihex(1200);
+        //setup encoder
         let mut encoder = Encoder::new(Vec::new()).unwrap();
+        //push stdin to encoder to gzip it
         copy(&mut stdin().lock(), &mut encoder).unwrap();
+        //pull encoded data out as a vector
         let encoded_data = encoder.finish().into_result().unwrap();
+        //push vector data to stdout
         copy(&mut encoded_data.as_slice(), &mut stdout()).unwrap();
     }
 }
