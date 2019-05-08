@@ -25,11 +25,7 @@ impl ICommandDelegate for DecompressCommand {
 
     fn get_subcommand<'a, 'b>(&self) -> App<'a, 'b> {
         return SubCommand::with_name(self.get_name())
-            .about("decompress stdin")/*
-            .arg(Arg::with_name("debug")
-                .short("d")
-                .help("print debug information verbosely")
-            )*/
+            .about("decompress stdin")
         ;
     }
 
